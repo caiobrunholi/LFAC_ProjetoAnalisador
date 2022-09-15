@@ -102,7 +102,7 @@ public class Parser {
         }
     }
 
-    // REGRA: factor = '(', expr, ')' | number | id;
+    // REGRA: factor = '(', expr, ')' |  '-',exp | number | id;
     private void factor() throws Exception {
         switch (token.tag) {
             case LPAREN:
@@ -110,6 +110,10 @@ public class Parser {
                 expr();
                 accept(Tag.RPAREN);
                 break;
+            case MINUS:
+                accept(Tag.MINUS);
+                expr();
+            break;
             case NUMBER:
                 accept(Tag.NUMBER);
                 break;
