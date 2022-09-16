@@ -9,6 +9,7 @@ package compiler.scanner;
 %class Scanner
 %unicode
 %type Token
+%debug
 
 %eofval{
     return new Token(Tag.EOF, yyline, yycolumn);
@@ -22,7 +23,7 @@ package compiler.scanner;
 %eof}
 
 
-delim   = [\ \t\n]
+delim   = [\ \t\n\r]
 ws      = {delim}+
 digit	= [0-9]
 number	= {digit}+(\.{digit}+)?([Ee][+-]?{digit}+)?
